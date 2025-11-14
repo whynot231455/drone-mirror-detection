@@ -1,21 +1,80 @@
 # 🚁 Drone Landing Check System (Polarization Test)
 
-This project provides a Python-based Graphical User Interface (GUI) application to perform an automated landability check for a drone by detecting highly reflective surfaces (like mirrors or glare from water) using a controlled polarized filter.
+A Python-based **Graphical User Interface (GUI)** application designed to perform an automated **drone landability check** by detecting **highly reflective surfaces** such as mirrors, glass, or water glare using a **polarized filter system**.
 
-It includes an offline test version of the main script (`final_cam_gui.py`) and a utility script (`camera_test.py`) for hardware setup.
+This project includes:
 
-## ⚠️ Important Note: Test Mode
-This version (`final_cam_gui.py`) runs in **TEST MODE**. It simulates drone mode changes (`LAND` or `LOITER`) but does not communicate with a real Pixhawk or flight controller.
+- `final_cam_gui.py` — Main GUI application (**TEST MODE**)
+- `camera_test.py` — Utility script to find the correct camera index
 
 ---
 
-## 🛠️ Project Setup and Dependencies
+## ⚠️ Test Mode Notice
 
-### Recommended: Use a Python Virtual Environment 🧪
+The main script runs in **TEST MODE**, meaning:
 
-It is **highly recommended** to use a Python virtual environment (like `venv`) to manage the project's dependencies. This prevents conflicts with other Python projects on your system.
+- Drone mode changes (`LAND`, `LOITER`) are **simulated**
+- No communication occurs with a real Pixhawk or flight controller
 
-**1. Create the Environment:**
+This mode is ideal for offline testing and UI validation without hardware risk.
+
+---
+
+## 🛠️ Project Setup & Dependencies
+
+### 🔹 1. Create a Virtual Environment (Highly Recommended)
+
+This prevents package conflicts and keeps your environment clean.
+
 ```bash
-# Using venv (standard Python module)
 python -m venv venv
+
+# Activate on Windows
+.\venv\Scripts\activate
+
+# Install required libraries
+pip install opencv-python pyserial numpy pillow
+
+```
+## ⚙️ Hardware & Configuration
+
+### 🔸 1. Camera Index Setup (Extremely Important)
+
+Run the camera testing utility:
+```bash
+python camera_test.py
+```
+Check each index and locate the one showing the actual drone camera feed.
+
+Then update the value in final_cam_gui.py:
+
+```bash
+CAMERA_INDEX = <your_camera_index> //line 16 (in final_cam_gui.py)
+```
+
+### 🔸 2. Servo / Arduino Configuration
+
+The system uses serial communication to rotate a servo-mounted polarizer.
+
+Ensure that:
+- Your Arduino is connected
+- The COM port is correctly set
+  
+Modify the port inside final_cam_gui.py if required:
+```bash
+SERVO_PORT = "COM6"   # Replace with your Arduino COM port
+```
+## ▶️ Running the Main Application
+
+Make sure the virtual environment is active, then run:
+```bash
+python final_cam_gui.py
+```
+This starts the GUI, live camera feed, and the polarization-based landing evaluation system.
+
+## 📁 Included Scripts
+
+| File               | Description                              |
+| ------------------ | ---------------------------------------- |
+| `final_cam_gui.py` | Main GUI application (TEST MODE)         |
+| `camera_test.py`   | Script to determine correct camera index |
