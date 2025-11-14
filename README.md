@@ -1,5 +1,10 @@
 # 🚁 Drone Landing Check System (Polarization Test)
 
+<img width="1280" height="640" alt="github_drone-landing" src="https://github.com/user-attachments/assets/d37765df-ac0a-4566-8886-abbcaf8f2bd2" /> </p>
+
+## Circuit Diagram
+<img width="1280" height="640" alt="github_circuit-diagram" src="https://github.com/user-attachments/assets/fc618d38-0fd5-453f-a34a-2888f710015b" /> </p>
+
 A Python-based **Graphical User Interface (GUI)** application designed to perform an automated **drone landability check** by detecting **highly reflective surfaces** such as mirrors, glass, or water glare using a **polarized filter system**.
 
 This project includes:
@@ -22,7 +27,7 @@ This mode is ideal for offline testing and UI validation without hardware risk.
 
 ## 🛠️ Project Setup & Dependencies
 
-### 🔹 1. Create a Virtual Environment (Highly Recommended)
+### 🔹Create a Virtual Environment (Highly Recommended)
 
 This prevents package conflicts and keeps your environment clean.
 
